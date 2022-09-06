@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+{% for message in get_flashed_messages() %}
+  <p>{{ message }}</p>
+{% endfor %}  
+
+<h2>Data Overview</h2>
+
+<ul>
+  {% for name in names -%}
+    {% for ext in exts -%}
+        <li><a href="{{name}}{{ext}}">{{name}}{{ext}}</a></li>
+    {% endfor %}
+  </p>
+  {% endfor %}
+</ul>  
+
+</body>
+</html>

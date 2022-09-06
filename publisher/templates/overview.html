@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Data Overview</h2>
+
+<ul>
+  {% for name in names -%}
+    {% for ext in exts -%}
+        <li><a href="{{name}}{{ext}}">{{name}}{{ext}}</a></li>
+    {% endfor %}
+  </p>
+  {% endfor %}
+</ul>  
+
+</body>
+</html>
