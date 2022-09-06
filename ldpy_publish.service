@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve ldpy_publish
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/.../ldpy_publish
+Environment="PATH=/.../ldpy_publish/env/bin"
+ExecStart=/.../ldpy_publish/env/bin/gunicorn --workers 4 --bind unix:ldpy_publish.sock -m 007 ldpy_publish:create_app
+
+[Install]
+WantedBy=multi-user.target

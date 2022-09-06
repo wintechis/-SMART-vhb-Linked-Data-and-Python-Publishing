@@ -41,9 +41,9 @@ Activate the virtual environment (Windows example).
 env/scripts/activate
 ```
 
-Install Flask (2.2.2), RDFLib (6.2.0), and wheel (0.37.1). You can use also more recent versions, but the code snippets were only tested with the mentioned versions.
+Install Flask (2.2.2), RDFLib (6.2.0), requests (2.28.1), and wheel (0.37.1). You can use also more recent versions, but the code snippets were only tested with the mentioned versions.
 ```console
-pip install flask==2.2.2 rdflib==6.2.0 wheel==0.37.1
+pip install flask==2.2.2 rdflib==6.2.0 requests==2.28.1 wheel==0.37.1
 ```
 Congratulations! You have successfully installed all required packages.
 

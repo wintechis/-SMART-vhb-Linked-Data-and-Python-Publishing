@@ -1,3 +1,11 @@
-graft publisher/data
+##################################################
+## See 'https://packaging.python.org/en/latest/guides/using-manifest-in/' for more information
+
+##################################################
+## graft dir-pattern: Add all files under directories matching dir-pattern
+graft publisher/files
 graft publisher/templates
+
+##################################################
+## global-exclude pat1 pat2 ... : Remove all files anywhere in the source tree matching any of the listed patterns
 global-exclude *.pyc
