@@ -17,7 +17,7 @@ from flask import Flask, make_response, request, send_from_directory
 
 ##################################################
 ## Create Flask Webserver (only testing)
-## Run in console: Flask --app A_basic --debug run
+## Run in console: flask --app A_basic --debug run
 app = Flask(__name__)
 
 

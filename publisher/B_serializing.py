@@ -17,7 +17,7 @@ from rdflib import Graph
 
 ##################################################
 ## Create Flask Webserver (only testing)
-## Run in console: Flask --app B_serializing --debug run
+## Run in console: flask --app B_serializing --debug run
 app = Flask(__name__)
 
 ##################################################
@@ -85,7 +85,7 @@ MIMES = {
 
 # ############################################################
 # ## Return Response data''
-# def get_notation(name, ext: str):
+# def get_notation(name: str, ext: str):
 #     # get file extension of existing file
 #     f_ext = get_true_ext(name, ext)
 

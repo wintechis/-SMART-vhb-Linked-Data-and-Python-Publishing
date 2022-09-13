@@ -12,14 +12,14 @@
 ##################################################
 ## Import libraries
 import os
-from flask import Flask, make_response, request, send_from_directory, abort, render_template, redirect, url_for, flash
-from rdflib import Graph
+from flask import Flask, make_response, request, send_from_directory, render_template, redirect, url_for, flash
 
-from B_serializing import get_mime, get_notation, get_true_ext, parse, serialize
+
+from B_serializing import get_mime, get_true_ext, parse, serialize
 
 ##################################################
 ## Create Flask Webserver (only testing)
-## Run in console: Flask --app C_redirecting --debug run
+## Run in console: flask --app C_redirecting --debug run
 app = Flask(__name__)
 
 ##################################################
@@ -58,8 +58,23 @@ def get_file(filename:str):
 
 ############################################################
 ## Show overview of available files and formats (with flash)
-# @app.get('/')
-# def overview():
-#     root, dirs, files = next(os.walk(FILES))
-#     names = sorted([os.path.splitext(f)[0] for f in files])
-#     return render_template('overview_with_flash.html', names=names, exts=sorted(MIMES.keys()))
+@app.get('/')
+def overview():
+    root, dirs, files = next(os.walk(FILES))
+    names = sorted([os.path.splitext(f)[0] for f in files])
+    return render_template('overview_with_flash.html', names=names, exts=sorted(MIMES.keys()))
+
+
+# ############################################################
+## Return Response data''
+def get_notation(name, ext: str):
+    # get file extension of existing file
+    f_ext = get_true_ext(name, ext)
+
+    if not f_ext:
+        flash(f'Filename "{name}" does not exist!')
+        return redirect(url_for('overview'), 404)
+    elif f_ext.startswith('.'):
+        f = f'{request.url[:-len(ext)]}{f_ext}'
+        return (serialize(parse(f), ext), 200) # request for serialized data
+    return send_from_directory(FILES, f_ext) # request for original file
