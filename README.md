@@ -6,9 +6,9 @@
 ## Content
 This repository offers code snippets and exercises about the application of the Web framwork [Flask](https://flask.palletsprojects.com/en/2.2.x/) and the Python Package [RDFLib](https://rdflib.readthedocs.io/en/stable/) to serve RDF documents on the Web. It is part of the Smart vhb course **Linked Data and Python: Publishing** that also includes descriptive videos. If you are currently enrolled at a Bavarian university, you can access all content via the [smart.vhb.org](https://smart.vhb.org/). This repositoy provides code snippets, examples and exercises for the following elements:
 
-* tba
-* tba
-* tba
+* Serve data and files 
+* Serialize and serve RDF data in available formats/notations
+* Create Flash messages and retrieve them in HTML template
 
 If you want to learn more about the capabilities of the [RDFLib](https://rdflib.readthedocs.io/en/stable/), please have a look at this [repository](https://github.com/wintechis/SMART-vhb-Linked-Data-and-Python-Introduction).
 
@@ -46,22 +46,6 @@ Install Flask (2.2.2), RDFLib (6.2.0), requests (2.28.1), and wheel (0.37.1). Yo
 pip install flask==2.2.2 rdflib==6.2.0 requests==2.28.1 wheel==0.37.1
 ```
 Congratulations! You have successfully installed all required packages.
-
---
----
-
-## Exercises, Solutions and Tests
-In folder "exercises", exercise files for each section can be found adhering to the enumeration. In folder "solutions", exemplary code is provided to solve each exercise. You can run tests that compare your solution (in the exercise file) with the given solution (in the solution file). To run all tests, type in your console:
-
-```console
-python -m unittest -v tests
-```
-
-If you want to run only the tests for exercise 1, type:
-
-```console
-python -m unittest -v tests.E1
-```
 
 
 ## Questions, Remarks and Issues

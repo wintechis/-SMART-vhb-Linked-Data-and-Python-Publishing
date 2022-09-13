@@ -58,8 +58,8 @@ def get_file(filename:str):
 
 ############################################################
 ## Show overview of available files and formats (with flash)
-@app.get('/')
-def overview():
-    root, dirs, files = next(os.walk(FILES))
-    names = sorted([os.path.splitext(f)[0] for f in files])
-    return render_template('overview_with_flash.html', names=names, exts=sorted(MIMES.keys()))
+# @app.get('/')
+# def overview():
+#     root, dirs, files = next(os.walk(FILES))
+#     names = sorted([os.path.splitext(f)[0] for f in files])
+#     return render_template('overview_with_flash.html', names=names, exts=sorted(MIMES.keys()))
