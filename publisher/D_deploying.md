@@ -16,7 +16,10 @@ To easily move the application to your Linux server, we build a distribution fil
 
 You can find the file in dist/publisher-1.0.0-py3-none-any.whl. The file name is in the format of {project name}-{version}-{python tag} -{abi tag}-{platform tag}.
 
-## Step 3: Configure python environment on Linux server (here: Raspberry Pi 3B+ / RaspberryPi OS Bullseye)
+## Step 3: Configure Python environment on Linux server
+
+_Note: this example is using a Raspberry Pi 3B+ running Raspberry Pi OS Bullseye as the Linux server. Instead of the local IP address, the hostname "raspberrypi.local" is used._
+
 1. Establish SSH connection
 ```console
 ssh pi@raspberrypi.local
@@ -49,14 +52,15 @@ pi@raspberrypi:~/ldpy_publish $ source env/bin/activate
 ```
 
 3. Start the WSGI server via shell
-3a. Install and start the application with the Waitress Webserver on port 5000
+   
+3a. Install and start the application with the Waitress Webserver on port 5000.
 ```console
 (env) pi@raspberrypi:~/ldpy_publish $  pip install waitress
 (env) pi@raspberrypi:~/ldpy_publish $ waitress-serve --listen 0.0.0.0:5000 --call publisher:create_app
 ```
 You can read more about the arguments and configuration Waitress offers in the [official documentation](https://docs.pylonsproject.org/projects/waitress/en/latest/index.html).
 
-3b. Install and start the application with the Gunicorn Webserver on port 5000
+3b. Install and start the application with the Gunicorn Webserver on port 5000.
 ```console
 (env) pi@raspberrypi:~/ldpy_publish $ pip install gunicorn
 (env) pi@raspberrypi:~/ldpy_publish $ gunicorn --bind 0.0.0.0:5000 "publisher:create_app()"
@@ -68,9 +72,10 @@ You can read more about the arguments and configuration Gunicorn offers in the [
 
 ## Step 6: Create service to run application permanently
 1. At the moment, the WSGI server is started via shell and will stop when you close the SSH connection. Thus, we must create a service that the server runs permanently. It is easier to work with an explicit Flask instance, when working with services. For that we create a simple Python file _wsgi.py_.
+   
 ```console
 (env) pi@raspberrypi:~/ldpy_publish $ nano wsgi.py
-```console
+```
 
 with the content:
 ```python
@@ -145,4 +150,4 @@ pi@raspberrypi:~ $ sudo systemctl restart nginx
 ```
 6. Now you should be able to reach the Web server in your browser with your local IP address. Note that your Web server can be only reached in the same network. 
 
-If you want to reach the Web server from other networks and your Linux server does not have a static IP address, there are some workarounds that are not discussed in this course with DynDNS providern (e.g., [no-ip](noip.com)).
+If you want to reach the Web server from other networks and your Linux server does not have a static IP address, there are some workarounds that are not discussed in this course with DynDNS providern (e.g., [no-ip](https://www.noip.com)).
