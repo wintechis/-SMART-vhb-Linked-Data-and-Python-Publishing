@@ -15,7 +15,7 @@ import os
 from flask import Flask, make_response, request, send_from_directory, render_template, redirect, url_for, flash
 
 
-from B_serializing import get_mime, get_true_ext, parse, serialize
+from .B_serializing import get_mime, get_true_ext, parse, serialize
 
 ##################################################
 ## Create Flask Webserver (only testing)

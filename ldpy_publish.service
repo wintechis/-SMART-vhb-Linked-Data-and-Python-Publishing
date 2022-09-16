@@ -1,13 +1,20 @@
 [Unit]
-Description=Gunicorn instance to serve ldpy_publish
+Description=Gunicorn/Waitress instance to serve publisher(ldpy_publish)
 After=network.target
 
 [Service]
-User=root
+User=pi
 Group=www-data
-WorkingDirectory=/.../ldpy_publish
-Environment="PATH=/.../ldpy_publish/env/bin"
-ExecStart=/.../ldpy_publish/env/bin/gunicorn --workers 4 --bind unix:ldpy_publish.sock -m 007 ldpy_publish:create_app
+WorkingDirectory=/home/pi/ldpy_publish
+Environment="PATH=/home/pi/ldpy_publish/env/bin"
+
+# Addressing IP:Port
+# ExecStart=/home/pi/ldpy_publish/env/bin/waitress-serve --listen 0.0.0.0:5000 wsgi:app 
+# ExecStart=/home/pi/ldpy_publish/env/bin/gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
+
+# Addressing Unix socket
+# ExecStart=/home/pi/ldpy_publish/env/bin/waitress-serve --unix-socket publisher.sock --unix-socket-perms 007 wsgi:app 
+# ExecStart=/home/pi/ldpy_publish/env/bin/gunicorn --workers 4 --bind unix:publisher.sock -m 007 wsgi:app
 
 [Install]
 WantedBy=multi-user.target
